@@ -11,7 +11,7 @@ end
 
 function create_callbacks(t_inv, start_time, n_invaders, n_species, cutoff)
     cb = PeriodicCallback(
-        integrator -> affect!(integrator, t_inv, start_time, n_invaders, n_species, cutoff), t_inv
+        integrator -> affect!(integrator, t_inv, start_time, n_invaders, n_species, cutoff), t_inv; save_positions = (false, false)
     )
     return cb
 end

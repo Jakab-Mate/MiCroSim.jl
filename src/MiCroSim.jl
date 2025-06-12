@@ -7,7 +7,7 @@ using LinearAlgebra: norm
 using StatsBase: sample
 using MicrobiomeAnalysis
 using Distributions
-using DifferentialEquations
+using DifferentialEquations: ODEProblem, solve, PeriodicCallback, KenCarp4
 
 include("structs.jl")
 include("generative_functions.jl")

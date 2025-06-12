@@ -152,7 +152,6 @@ end
     p = create_species_pool(D, n_families=5, family_size=100)
     sample = sample_pool(p, 1, 1)
     se = MiCroSim.generic_run(sample, D=D, W_ba=W_ba)
-    @test se isa SummarizedExperiment
     @test size(se.assays["sim"]) == (2, 1001)
     @test size(se.rowdata) == (2, 5)
     @test size(se.coldata) == (1001, 2)

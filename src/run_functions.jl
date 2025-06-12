@@ -61,12 +61,13 @@ function generic_run(sample::SampleStruct;
 
     u0 = vcat(sample.species_abundance, sample.resource_abundance)
     params = ParamStruct(n_species+n_invaders, n_resources, collect(1:n_species), sample.C, D, W_ba, sample.n_reactions, sample.n_splits, sample.m, phi, eta, tau, alpha, sample.a, sample.k, host_regulation)
-
+    tstop_times = [t_inv_0 + i*t_inv for i in 0:(n_invaders - 1) if t_inv_0 + i*t_inv ≤ t_span[2]]
     prob = ODEProblem(equations, u0, t_span, params)
     cb = create_callbacks(t_inv, t_inv_0, n_invaders, n_species, cutoff)
-    solution = solve(prob, KenCarp4(autodiff=false), abstol = 1e-10, reltol = 1e-10; saveat=1, callback=cb)
+    solution = solve(prob, KenCarp4(autodiff=false), abstol = 1e-10, reltol = 1e-10; saveat=1, callback=cb, tstops=tstop_times)
 
     t = solution.t
+
     Xapp = hcat(map(u -> u[1:(n_species+n_invaders)], solution.u)...)
     assays = OrderedDict{String, AbstractArray}("sim" => Xapp);
     rowdata = DataFrame(
