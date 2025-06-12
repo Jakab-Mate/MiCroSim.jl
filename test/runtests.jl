@@ -3,6 +3,8 @@ using Test
 using Random
 using Logging
 
+#test
+
 ### helper_functions.jl
 @testset "Testing non_zero_pos" begin
     @test MiCroSim.non_zero_pos([1, 0, 3]) == [(1,), (3,)]
