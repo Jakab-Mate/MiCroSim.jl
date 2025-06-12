@@ -37,7 +37,7 @@ end
 
 function create_spatial_callbacks(t_inv, start_time, n_invaders, n_species, cutoff, n_comms)
     cb = PeriodicCallback(
-        integrator -> spatial_affect!(integrator, t_inv, start_time, n_invaders, n_species, cutoff, n_comms), t_inv
+        integrator -> spatial_affect!(integrator, t_inv, start_time, n_invaders, n_species, cutoff, n_comms), t_inv; save_positions = (false, false)
     )
     return cb
 end
