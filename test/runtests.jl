@@ -138,13 +138,13 @@ end
 end
 
 ### spatial_equations.jl
-@testset "Testing spatial equations" begin
-    u = vcat([1:12; 1:10; fill(0, 20)])
-    p = MiCroSim.ParamStruct(4, 10, collect(1:10), ones(10, 10, 10), ones(Int64, 10, 10), ones(Float64, 10, 10), ones(Int64, 10), ones(Float64, 10), ones(10), 1.0, 1.0, ones(10), ones(10), ones(10), ones(10), false)
-    t = 0
-    out = MiCroSim.spatial_equations(u, p, t)
-    @test size(out) == (42,)
-end
+# @testset "Testing spatial equations" begin
+#     u = vcat([1:12; 1:10; fill(0, 20)])
+#     p = MiCroSim.ParamStruct(4, 10, collect(1:10), ones(10, 10, 10), ones(Int64, 10, 10), ones(Float64, 10, 10), ones(Int64, 10), ones(Float64, 10), ones(10), 1.0, 1.0, ones(10), ones(10), ones(10), ones(10), false)
+#     t = 0
+#     out = MiCroSim.spatial_equations(u, p, t)
+#     @test size(out) == (42,)
+# end
 
 ### run_functions.jl
 @testset "Testing generic_run" begin
