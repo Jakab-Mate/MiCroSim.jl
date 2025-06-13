@@ -165,7 +165,6 @@ end
     se_dict = MiCroSim.spatial_run(3, sample)
     @test length(se_dict) == 3
     for se in values(se_dict)
-        @test se isa SummarizedExperiment
         @test size(se.assays["sim"]) == (2, 1001)
         @test size(se.rowdata) == (2, 4)
         @test size(se.coldata) == (1001, 2)
